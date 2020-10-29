@@ -87,6 +87,18 @@ int DeleteNodeAt(Node** ppNode, int cn)
 {
     //  チャレンジ問題1
     //  ここを実装する
+    City pNode;
+    int count=0;
+    while{
+
+    }
+    if(count==cn){
+         = pNode;
+        pNode = pNode->next;
+    }
+
+    
+count++;
 
 }
 #endif
@@ -123,7 +135,7 @@ int main(void)
     FILE* fp;
     int key;
 
-    fp = fopen("nagasaki.csv","r");
+    fp = fopen("nagasaki2.csv","r");
     if(fp==NULL){
         fputs("File open error\n",stderr);
         exit(EXIT_FAILURE);
