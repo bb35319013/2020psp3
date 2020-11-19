@@ -33,9 +33,9 @@ char* BMSearch(char text[], char key[])
 {
     //  ここを実装する
     char table[256];
-    int n=0,index=strlen(key)-1,pos=3,key_len=strlen(key);
+    int n=0,index=strlen(key)-1,key_len=strlen(key),pos=key_len-1;
     while(n<=256){
-        table[n]=4;
+        table[n]=key_len;
         n++;
     }
     int table_len=strlen(table);
@@ -54,6 +54,7 @@ char* BMSearch(char text[], char key[])
                 pos--;
             }
             else{
+                pos=key_len-1;
                 break;
             }
         }
