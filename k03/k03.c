@@ -32,9 +32,9 @@ char* ForceSearch(char text[], char key[])
 char* BMSearch(char text[], char key[])
 {
     //  ここを実装する
-    char table[256];
+    char table[ALPHABET_LEN];
     int n=0,index=strlen(key)-1,key_len=strlen(key),pos=key_len-1,index_before;
-    while(n<=256){
+    while(n<=ALPHABET_LEN){
         table[n]=key_len;
         n++;
     }
