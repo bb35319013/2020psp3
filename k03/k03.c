@@ -60,7 +60,7 @@ char* BMSearch(char text[], char key[])
         }
         index_before=index;
         index=index+table[(int)text[index]];
-        if(index_before<index){
+        if(index_before>index){
             index=index_before+1;
         }
     }
