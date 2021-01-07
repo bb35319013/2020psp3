@@ -101,7 +101,7 @@ void QuickSort(City arrayCity[], int left, int right)
     //  ここを実装する
     int i,j;
     City pivot,City_tmp;
-    if((right-left)>1){
+    if((right-left)>=1){
         i=left;
         j=right;
         pivot=arrayCity[left];
