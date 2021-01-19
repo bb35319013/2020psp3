@@ -116,6 +116,8 @@ void DepthFirstSearch(int size, int matrix[size][size], int start)
 
     while(StackIsEmpty()==FALSE){
         val = StackPop();
+        printf("%d\n", val);
+        PrintStationName(val);
         if(visited[val]==0){
             visited[val] = 1;
             for ( i = 0; i < size; i++){
@@ -202,6 +204,8 @@ void BreadthFirstSearch(int size, int matrix[size][size], int start)
 
     while(QueueIsEmpty()==FALSE){
         val = DeQueue();
+        printf("%d\n", val);
+        PrintStationName(val);
         if(visited[val]==0){
             visited[val] = 1;
             for ( i = 0; i < size; i++){
