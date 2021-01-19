@@ -126,9 +126,8 @@ void DepthFirstSearch(int size, int matrix[size][size], int start)
                 }
             }
         }
-
     }
-    
+    printf("kokomade hukasa");
 }
 
 
