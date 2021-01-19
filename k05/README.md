@@ -126,19 +126,19 @@ int AdjacencyMatrix[MAX_STATIONS][MAX_STATIONS] = {
 
 ```
 0
-赤迫      
+赤迫
 1
 長崎大学前
 2
-長崎駅前  
+長崎駅前
 6
-市民会館  
+市民会館
 7
-蛍茶屋    
+蛍茶屋
 6
-市民会館  
+市民会館
 5
-崇福寺    
+崇福寺
 6
 市民会館
 3
@@ -165,7 +165,7 @@ int AdjacencyMatrix[MAX_STATIONS][MAX_STATIONS] = {
 赤迫
 0
 赤迫
-0
+hukasa0
 赤迫
 1
 長崎大学前
