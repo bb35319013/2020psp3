@@ -106,26 +106,44 @@ int StackIsEmpty(void)
 void DepthFirstSearch(int size, int matrix[size][size], int start)
 {
     //  ここを実装する
-    int visited[size], i, val;
+    int visited[size], i, j, val;
+    int from[size][size];
     for ( i = 0; i < size; i++)
     {
         visited[i] = 0; 
     }
+    for(i = 0; i < size; i++){
+        for ( j = 0; j < size; j++){
+            from[i][j] = -1;
+            }
+        }
+    
     StackInit;
     StackPush(start);
-
     while(StackIsEmpty()==FALSE){
         val = StackPop();
-        printf("%d\n", val);
-        PrintStationName(val);
         if(visited[val]==0){
             visited[val] = 1;
+            printf("%d\n", val);
+            PrintStationName(val);
             for ( i = 0; i < size; i++){
                 if(matrix[val][i]!=0){
                     StackPush(i);
+                    from[i][val] = val;
                 }
             }
         }
+    }
+    printf("charenge\n");
+    for(i = 0; i < size; i++){
+        PrintStationName(i);
+        printf(":");
+        for ( j = 0; j < size; j++){
+            if(from[i][j]>=0){
+            PrintStationName(from[i][j]);
+            }
+        }
+        printf("\n");
     }
     printf("kokomade hukasa");
 }
@@ -203,10 +221,10 @@ void BreadthFirstSearch(int size, int matrix[size][size], int start)
 
     while(QueueIsEmpty()==FALSE){
         val = DeQueue();
-        printf("%d\n", val);
-        PrintStationName(val);
         if(visited[val]==0){
             visited[val] = 1;
+            printf("%d\n", val);
+            PrintStationName(val);
             for ( i = 0; i < size; i++){
                 if(matrix[val][i]!=0){
                     EnQueue(i);
