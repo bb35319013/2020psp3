@@ -46,9 +46,12 @@ void PrintStationName(int index)
     printf("%s\n", ArrayStation[index].kanji);
 }
 
-typedef int Item;
-Item ErrorItem = -1;
-
+//typedef int Item;
+typedef struct tagItem{
+        int index;
+        int from;
+    }Item;
+Item ErrorItem = {-1,-1};
 
 #define STACK_SIZE  10
 Item Stack[STACK_SIZE];
@@ -106,42 +109,43 @@ int StackIsEmpty(void)
 void DepthFirstSearch(int size, int matrix[size][size], int start)
 {
     //  ここを実装する
-    int visited[size], i, j, val;
-    int from[size][size];
+    int visited[size], i ;
+    int from[size];
     for ( i = 0; i < size; i++)
     {
         visited[i] = 0; 
     }
-    for(i = 0; i < size; i++){
-        for ( j = 0; j < size; j++){
-            from[i][j] = -1;
-            }
-        }
+    struct tagItem item;
+    struct tagItem val;
+    item.index=start;
+    item.from=-1;
     
-    StackInit;
-    StackPush(start);
+    StackInit();
+    StackPush(item);
     while(StackIsEmpty()==FALSE){
         val = StackPop();
-        if(visited[val]==0){
-            visited[val] = 1;
+        if(visited[val.index]==0){
+            visited[val.index] = 1;
+            from[val.index] = val.from;
             printf("%d\n", val);
-            PrintStationName(val);
+            PrintStationName(val.index);
             for ( i = 0; i < size; i++){
-                if(matrix[val][i]!=0){
-                    StackPush(i);
-                    from[i][val] = val;
+                if(matrix[val.index][i]!=0){
+                    item.index = i;
+                    item.from = val.index;
+                     StackPush(item);
                 }
             }
         }
     }
     printf("charenge\n");
-    for(i = 0; i < size; i++){
+    for( i = 0; i < size; i++){
         PrintStationName(i);
         printf(":");
-        for ( j = 0; j < size; j++){
-            if(from[i][j]>=0){
-            PrintStationName(from[i][j]);
-            }
+        int index=i;
+        while(from[index]!=-1){
+            index = from[index];
+            PrintStationName(index);
         }
         printf("\n");
     }
@@ -211,23 +215,29 @@ int QueueIsEmpty()
 void BreadthFirstSearch(int size, int matrix[size][size], int start)
 {
     //  ここを実装する
-    int visited[size], i, val;
+    int visited[size], i;
     for ( i = 0; i < size; i++)
     {
         visited[i] = 0;
     }
-    InitQueue;
-    EnQueue(start);
+    struct tagItem item;
+    struct tagItem val;
+    item.index = start;
+    item.from = -1;
+    InitQueue();
+    EnQueue(item);
 
     while(QueueIsEmpty()==FALSE){
         val = DeQueue();
-        if(visited[val]==0){
-            visited[val] = 1;
+        if(visited[val.index]==0){
+            visited[val.index] = 1;
             printf("%d\n", val);
-            PrintStationName(val);
+            PrintStationName(val.index);
             for ( i = 0; i < size; i++){
-                if(matrix[val][i]!=0){
-                    EnQueue(i);
+                if(matrix[val.index][i]!=0){
+                    item.index = i;
+                    item.from = val.index;
+                    EnQueue(item);
                 }
             }
         }
