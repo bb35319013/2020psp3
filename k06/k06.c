@@ -79,9 +79,8 @@ void DynamicProgLimited(Menu arrayItem[], int items, int nap_size)
         }
     }
     for(i=1; i<=items; i++){
-        for (k=1; k<=arrayItem[i-1].price; k++){
+        for (k=1; k<arrayItem[i-1].price; k++){
             nap_value[i][k] = nap_value[i-1][k];
-            //printf("calorie = %d\n", nap_value[i][k]);
             
         }
         for(j=k; j<=nap_size; j++){
